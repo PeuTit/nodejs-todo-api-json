@@ -2,6 +2,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
+import { todosController } from "./controllers/todos";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use("/todos", todosController);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
