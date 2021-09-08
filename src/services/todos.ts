@@ -2,6 +2,8 @@ import { BaseTodo, Todo } from "../models/todo";
 import { Todos } from "../models/todos";
 
 // Local object
+// This is a temporary way to implemant storag
+// The goal is to later use a true database.
 let todos: Todos = {
   1: {
     id: 1,
@@ -31,9 +33,10 @@ export const create = async (newTodo: BaseTodo): Promise<Todo> => {
   return todos[id];
 };
 
-// Read
+// Read all
 export const findAll = async (): Promise<Todo[]> => Object.values(todos);
 
+// Read one
 export const find = async (id: number): Promise<Todo> => todos[id];
 
 // Update
@@ -43,9 +46,7 @@ export const update = async (
 ): Promise<Todo | null> => {
   const todo = await todos[id];
 
-  if (!todo) {
-    return null;
-  }
+  if (!todo) return null;
 
   todos[id] = { id, ...updatedTodo };
 
@@ -56,9 +57,7 @@ export const update = async (
 export const remove = async (id: number): Promise<void | null> => {
   const todo = await find(id);
 
-  if (!todo) {
-    return null;
-  }
+  if (!todo) return null;
 
   delete todos[id];
 };

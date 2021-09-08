@@ -23,9 +23,7 @@ todosController.get("/:id", async (req: Request, res: Response) => {
   try {
     const todo: Todo = await TodoServices.find(id);
 
-    if (!todo) {
-      return res.status(200).send("Todo not found!");
-    }
+    if (!todo) return res.status(200).json(todoNotFound);
 
     res.status(200).send(todo);
   } catch (e: any) {
@@ -54,9 +52,7 @@ todosController.put("/:id", async (req: Request, res: Response) => {
     const newTodo: Todo = req.body;
     const existingTodo: Todo = await TodoServices.find(id);
 
-    if (!existingTodo) {
-      return res.status(200).send("Todo not found!");
-    }
+    if (!existingTodo) return res.status(200).json(todoNotFound);
 
     const updatedTodo = await TodoServices.update(id, newTodo);
 
@@ -73,9 +69,7 @@ todosController.delete("/:id", async (req: Request, res: Response) => {
   try {
     const existingTodo: Todo = await TodoServices.find(id);
 
-    if (!existingTodo) {
-      return res.status(200).send("Todo not found!");
-    }
+    if (!existingTodo) return res.status(200).json(todoNotFound);
 
     await TodoServices.remove(id);
 
@@ -84,3 +78,8 @@ todosController.delete("/:id", async (req: Request, res: Response) => {
     res.status(500).send(e.message);
   }
 });
+
+// Helper methods
+const todoNotFound = {
+  status: "Not found!",
+};

@@ -16,9 +16,11 @@ const app = express();
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.status(200).json({ hello: "world" });
+
+app.get("/", (_req, res) => {
+  res.status(200).json({ status: "healthy" });
 });
+
 app.use("/todos", todosController);
 
 app.listen(PORT, () => {
