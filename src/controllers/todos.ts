@@ -68,8 +68,14 @@ todosController.put("/:id", async (req: Request, res: Response) => {
 
 // DELETE todos/:id
 todosController.delete("/:id", async (req: Request, res: Response) => {
+  const id: number = parseInt(req.params.id, 10);
+
   try {
-    const id: number = parseInt(req.params.id, 10);
+    const existingTodo: Todo = await TodoServices.find(id);
+
+    if (!existingTodo) {
+      return res.status(200).send("Todo not found!");
+    }
 
     await TodoServices.remove(id);
 
