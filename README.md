@@ -4,6 +4,18 @@ Simple todo NodeJS API with JSON.
 You can Create, Read, Update and Delete todo.
 A todo simply contains a title, a description, an isDone field and an image.
 
+## Todo (lol)
+
+- [x] Error handling
+- [x] Deployment on a server
+- [] Authentication using an Auth provider (Auth0)
+- [] Seting up test (models, controllers)
+- [] CI/CD using Github Action
+- [] Consume the API
+  - [] CLI
+  - [] Web
+  - [] Application
+
 ## Endpoint
 
 Create a todo
@@ -26,11 +38,10 @@ Delete a todo
 
     DELETE /todos/:id
 
-## Todo (lol)
+## Deployment
 
-The goal for this api is to be consumed by a CLI, a web app and a phone app.
-Authentication is also a necessary step.
-Error handling is another important one.
+Currently deployed on Heroku at this address:
+https://todo-services-nodejs.herokuapp.com/
 
 ## Other
 
