@@ -6,7 +6,7 @@ import * as TodoServices from "../services/todos";
 export const todosController = express.Router();
 
 // GET todos
-todosController.get("/", async (req: Request, res: Response) => {
+todosController.get("/", async (_req: Request, res: Response) => {
   try {
     const todos: Todo[] = await TodoServices.findAll();
 
@@ -25,9 +25,9 @@ todosController.get("/:id", async (req: Request, res: Response) => {
 
     if (!todo) return res.status(200).json(todoNotFound);
 
-    res.status(200).send(todo);
+    return res.status(200).send(todo);
   } catch (e: any) {
-    res.status(500).send(e.message);
+    return res.status(500).send(e.message);
   }
 });
 
@@ -38,9 +38,9 @@ todosController.post("/", async (req: Request, res: Response) => {
 
     const newTodo = await TodoServices.create(todo);
 
-    res.status(201).json(newTodo);
+    return res.status(201).json(newTodo);
   } catch (e: any) {
-    res.status(500).send(e.message);
+    return res.status(500).send(e.message);
   }
 });
 
@@ -56,9 +56,9 @@ todosController.put("/:id", async (req: Request, res: Response) => {
 
     const updatedTodo = await TodoServices.update(id, newTodo);
 
-    res.status(200).json(updatedTodo);
+    return res.status(200).json(updatedTodo);
   } catch (e: any) {
-    res.status(500).send(e.message);
+    return res.status(500).send(e.message);
   }
 });
 
@@ -73,9 +73,9 @@ todosController.delete("/:id", async (req: Request, res: Response) => {
 
     await TodoServices.remove(id);
 
-    res.sendStatus(204);
+    return res.sendStatus(204);
   } catch (e: any) {
-    res.status(500).send(e.message);
+    return res.status(500).send(e.message);
   }
 });
 

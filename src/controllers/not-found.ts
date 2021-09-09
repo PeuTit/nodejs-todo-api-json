@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
 export const notFoundHandler = (
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
   const message = { status: "Ressource not found!" };
 
