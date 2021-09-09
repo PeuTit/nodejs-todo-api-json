@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
-    "tsc": "tsc",
-    "start": "node out/index.js"
+    "build": "tsc",
+    "start": "node out/index.js",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "todo",
