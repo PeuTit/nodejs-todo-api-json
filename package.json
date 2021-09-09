@@ -4,7 +4,9 @@
   "description": "A simple todo API",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts"
+    "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "tsc": "tsc",
+    "start": "node out/index.js"
   },
   "keywords": [
     "todo",
