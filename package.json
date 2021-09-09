@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A simple todo API",
   "main": "index.js",
+  "engines": {
+    "node": "16.9.0",
+    "npm": "7.21.1"
+  },
   "scripts": {
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
     "build": "tsc",
